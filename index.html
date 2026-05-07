@@ -1,8 +1,498 @@
 <!DOCTYPE html>
-<html>
-  <head><title>Jeffrey Hou</title></head>
-  <body>
-    <h1>Hi, I'm Jeffrey Hou</h1>
-    <p>Mechatronics Engineer | University of Waterloo</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jeffrey Hou - Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #ff6b35;
+      --text: #f0ede8;
+      --muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+    }
+
+    /* — NAV — */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* — HERO — */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-bio {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.6s forwards;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 2px;
+      font-family: var(--font-mono); font-size: 0.8rem;
+      font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative;
+      height: 460px;
+      opacity: 0;
+      animation: fadeIn 1s 0.6s forwards;
+    }
+    .hero-card {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    .hero-card.card-main {
+      top: 0; left: 10%; right: 0;
+      height: 280px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    }
+    .code-line { color: var(--muted); margin-bottom: 0.4rem; line-height: 1.6; }
+    .code-line .kw { color: #c792ea; }
+    .code-line .fn { color: #82aaff; }
+    .code-line .str { color: var(--accent); }
+    .code-line .cm { color: #546e7a; font-style: italic; }
+    .hero-card.card-stat {
+      bottom: 30px; left: 0;
+      width: 180px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2.5rem; font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--accent); display: block;
+    }
+    .stat-label { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .hero-card.card-tech {
+      bottom: 0; right: 0;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      width: 200px;
+    }
+    .tech-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+      font-size: 0.7rem; color: var(--muted);
+      transition: all 0.2s;
+    }
+    .tech-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* — BG decoration — */
+    .bg-dot {
+      position: absolute; border-radius: 50%;
+      pointer-events: none;
+    }
+    .bg-dot-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,255,71,0.04) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .bg-dot-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,107,53,0.05) 0%, transparent 70%);
+      bottom: 0; left: -50px;
+    }
+
+    /* — SECTIONS — */
+    section { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; max-width: 60px;
+      height: 1px; background: var(--accent); opacity: 0.4;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 4rem;
+    }
+
+    /* — ABOUT — */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .about-text {
+      font-family: var(--font-mono); font-size: 0.9rem;
+      line-height: 1.9; color: var(--muted);
+    }
+    .about-text p { margin-bottom: 1.2rem; }
+    .about-text strong { color: var(--text); }
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;
+    }
+    .skill-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);
+    }
+    .skill-item::before {
+      content: '▸'; color: var(--accent); flex-shrink: 0;
+    }
+
+    /* — PROJECTS — */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { border-color: #333; transform: translateY(-4px); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-num {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--accent); opacity: 0.6; margin-bottom: 1rem;
+    }
+    .project-title {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      font-family: var(--font-mono); font-size: 0.82rem;
+      line-height: 1.7; color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .project-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+    }
+    .project-links { display: flex; gap: 1.5rem; }
+    .project-link {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    /* — CONTACT — */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    #contact .section-title { max-width: 600px; margin: 0 auto 1.5rem; }
+    .contact-sub {
+      font-family: var(--font-mono); font-size: 0.9rem;
+      color: var(--muted); margin-bottom: 3rem; line-height: 1.7;
+    }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    /* — FOOTER — */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-text {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    }
+    .footer-text span { color: var(--accent); }
+
+    /* — ANIMATIONS — */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* — RESPONSIVE — */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { padding: 6rem 1.5rem 3rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">YN.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="bg-dot bg-dot-1"></div>
+    <div class="bg-dot bg-dot-2"></div>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-label">// Available for work</p>
+        <h1 class="hero-name">Your<br><span>Name</span><br>Here.</h1>
+        <p class="hero-bio">
+          Mechatronics Engineer doing everything from<br>
+          3D printing and welding to automated systems<br>
+          and combat robots to developing web apps<br>
+          and games.<br>
+          Based in Toronto · Open to onsite and remote.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects →</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card card-main">
+          <div class="code-line"><span class="cm">// portfolio.js</span></div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line"><span class="kw">const</span> developer = {</div>
+          <div class="code-line">&nbsp;&nbsp;name: <span class="str">'Jeffrey Hou'</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;role: <span class="str">'Mechatronics Engineer'</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;Languages: [<span class="str">'Python'</span>, <span class="str">'C++/C#'</span>, <span class="str">'TS'</span>],</div>
+          <div class="code-line">&nbsp;&nbsp;available: <span class="kw">true</span>,</div>
+          <div class="code-line">};</div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line"><span class="fn">export default</span> developer;</div>
+        </div>
+        <div class="hero-card card-stat">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">Projects Shipped</span>
+        </div>
+        <div class="hero-card card-tech">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title">Building with<br>purpose & craft.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hi! I'm <strong>Jeffrey Hou</strong>, a Mechatronics Engineer with a passion for everything from mechanical design to game development. My comfort zone is the intersection of mechanical, electrical, and software engineering.</p>
+        <p>With <strong>3+ years of experience</strong>, I've worked everywhere - from tweaking 3D printers to automating embedded systems. I believe effective design comes from experience across multiple disciplines.</p>
+        <p>When I'm not coding, you'll find me hiking trails, playing the piano, or tweaking out over my shit ender clone.</p>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom: 1.5rem;">Technologies I work with</p>
+        <div class="skills-grid">
+          <div class="skill-item">C / C++ / C#</div>
+          <div class="skill-item">Python / NumPy, Matplotlib, PyTorch, Django</div>
+          <div class="skill-item">JavaScript / TypeScript</div>
+          <div class="skill-item">MATLAB / Simulink</div>
+          <div class="skill-item">VHDL / Ladder Logic</div>
+          <div class="skill-item">SolidWorks / Solid Edge / CATIA</div>
+          <div class="skill-item">3D Printing / PrusaSlicer</div>
+          <div class="skill-item">Git / CI/CD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">02 — Projects</p>
+    <h2 class="section-title">Things I've<br>built.</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <p class="project-num">001</p>
+        <h3 class="project-title">DAVWIRE Wire Harness Assembly Process Redesign</h3>
+        <p class="project-desc">Modelled, tested, and deployed wire clamps as a cost-effective alternative to expensive commercial ones.</p>
+        <div class="project-tags">
+          <span class="project-tag">3D printing</span>
+          <span class="project-tag">Solid Edge</span>
+          <span class="project-tag">MIL-SPEC</span>
+        </div>
+        <div class="project-links">
+          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.bgsrr35h7gq7" class="project-link">↗ Live Demo</a>
+          <a href="#" class="project-link">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-num">002</p>
+        <h3 class="project-title">Two-Axis Machine</h3>
+        <p class="project-desc">Another great project. A CLI tool, a mobile app, an API — whatever you've built. Keep descriptions punchy and results-focused.</p>
+        <div class="project-tags">
+          <span class="project-tag">C++</span>
+          <span class="project-tag">STM32 Nucleo-F401RE</span>
+          <span class="project-tag">GPIO, ADC, SPI, HAL</span>
+        </div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1DyH5fC6DIWlUK4rj_WyNMoTIHfiJgxtW/view?usp=sharing" class="project-link">↗ Live Demo</a>
+          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.kuzffggtem6w" class="project-link">⌥ Documentation</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-num">003</p>
+        <h3 class="project-title">Project Three</h3>
+        <p class="project-desc">Showcase your range here. Maybe an open-source contribution, a hackathon win, or a personal tool you built that others found useful.</p>
+        <div class="project-tags">
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">Tailwind</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link">↗ Live Demo</a>
+          <a href="#" class="project-link">⌥ GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label" style="justify-content: center;">03 — Contact</p>
+    <h2 class="section-title">Let's build<br>something great.</h2>
+    <p class="contact-sub">
+      I'm currently open to new opportunities — full-time roles,<br>
+      freelance projects, or just a friendly chat about tech.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:j3hou@uwaterloo.ca" class="btn btn-primary">✉ Say Hello</a>
+      <a href="https://www.linkedin.com/in/jeffrey-hou-b42b31264/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/jerbosu" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="resume.pdf" target="_blank" class="btn btn-outline">↓ Resume</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">Designed & built by <span>Jeffrey Hou</span></p>
+    <p class="footer-text">yourusername.github.io</p>
+  </footer>
+
+</body>
 </html>
