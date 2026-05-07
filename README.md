@@ -1,2 +1,2 @@
-# jerbosu.github.io
-Portfolio
+# Jeffrey Hou | Mechatronics Engineer
+## Portfolio
