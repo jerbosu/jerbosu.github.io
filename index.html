@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jeffrey Hou - Developer Portfolio</title>
+  <title>Jeffrey Hou - Engineering Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
@@ -20,6 +20,8 @@
       --muted: #888;
       --font-display: 'Syne', sans-serif;
       --font-mono: 'DM Mono', monospace;
+
+      --heading-weight: 700;
     }
 
     html { scroll-behavior: smooth; }
@@ -41,7 +43,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
+      font-size: 1.1rem; font-weight: var(--heading-weight); letter-spacing: 0.02em;
       color: var(--accent);
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -55,7 +57,7 @@
 
     /* — HERO — */
     #hero {
-      min-height: 100vh;
+      min-height: 120vh;
       display: flex; align-items: center;
       padding: 8rem 4rem 4rem;
       position: relative;
@@ -82,10 +84,10 @@
     }
     .hero-name {
       font-size: clamp(3.5rem, 7vw, 6.5rem);
-      font-weight: 800;
+      font-weight: var(--heading-weight);
       line-height: 0.95;
-      transform: scaleY(1.2); /* make font taller */
-      letter-spacing: -0.04em;
+      transform: scaleY(2); /* make font taller */
+      letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.6s 0.4s forwards;
@@ -120,9 +122,10 @@
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
+    /* class for div that contains hero-card and card-tech*/
     .hero-visual {
       position: relative;
-      height: 460px;
+      height: 420px;
       opacity: 0;
       animation: fadeIn 1s 0.6s forwards;
     }
@@ -140,6 +143,7 @@
       height: 280px;
       background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     }
+    /* card-main "code" colors */
     .code-line { color: var(--muted); margin-bottom: 0.4rem; line-height: 1.6; }
     .code-line .kw { color: #c792ea; }
     .code-line .fn { color: #82aaff; }
@@ -151,7 +155,7 @@
       text-align: center;
     }
     .stat-num {
-      font-size: 2.5rem; font-weight: 800;
+      font-size: 2.5rem; font-weight: var(--heading-weight);
       font-family: var(--font-display);
       color: var(--accent); display: block;
     }
@@ -159,7 +163,7 @@
     .hero-card.card-tech {
       bottom: 0; right: 0;
       display: flex; flex-wrap: wrap; gap: 0.5rem;
-      width: 200px;
+      /* width: 490px; */
     }
     .tech-tag {
       background: var(--bg);
@@ -201,7 +205,7 @@
     }
     .section-title {
       font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800; letter-spacing: -0.03em;
+      font-weight: var(--heading-weight); letter-spacing: -0.03em;
       line-height: 1.1; margin-bottom: 4rem;
     }
 
@@ -257,7 +261,7 @@
       color: var(--accent); opacity: 0.6; margin-bottom: 1rem;
     }
     .project-title {
-      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
+      font-size: 1.3rem; font-weight: var(--heading-weight); letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
     .project-desc {
@@ -336,7 +340,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">YN.</div>
+    <div class="nav-logo">JH</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -353,11 +357,10 @@
         <p class="hero-label">// Available for work</p>
         <h1 class="hero-name">Jeffrey<br><span>Hou</span></h1>
         <p class="hero-bio">
-          Mechatronics Engineer doing everything from<br>
-          3D printing and welding to automated systems<br>
-          and combat robots to developing web apps<br>
-          and games.<br>
-          Based in Toronto · Open to onsite and remote.
+          Mechatronics Engineer doing everything from 3D printing
+          and welding to automated systems and combat robots
+          to developing web apps and games <br><br>
+          Based in Toronto | Open to onsite and remote.
         </p>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">View Projects →</a>
@@ -372,15 +375,15 @@
           <div class="code-line">&nbsp;&nbsp;name: <span class="str">'Jeffrey Hou'</span>,</div>
           <div class="code-line">&nbsp;&nbsp;role: <span class="str">'Mechatronics Engineer'</span>,</div>
           <!-- <div class="code-line">&nbsp;&nbsp;Languages: [<span class="str">'Python'</span>, <span class="str">'C++/C#'</span>, <span class="str">'TS'</span>],</div> -->
-          <div class="code-line">&nbsp;&nbsp;available: <span class="kw">true</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;available: <span class="kw">true</span></div>
           <div class="code-line">};</div>
           <div class="code-line">&nbsp;</div>
-          <div class="code-line"><span class="fn">export default</span> developer;</div>
+          <div class="code-line"><span class="fn">export default</span> engineer;</div>
         </div>
-        <div class="hero-card card-stat">
+        <!-- <div class="hero-card card-stat">
           <span class="stat-num">12+</span>
           <span class="stat-label">Projects Shipped</span>
-        </div>
+        </div> -->
         <div class="hero-card card-tech">
           <span class="tech-tag">React</span>
           <span class="tech-tag">TypeScript</span>
@@ -492,7 +495,8 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-text">Designed & built by <span>Jeffrey Hou</span></p>
-    <p class="footer-text">yourusername.github.io</p>
+    <p class="nav-links"><a href="https://github.com/jerbosu">Github</a></p>
+
   </footer>
 
 </body>
