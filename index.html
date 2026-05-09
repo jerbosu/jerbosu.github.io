@@ -19,7 +19,7 @@
       --text: #f0ede8;
       --muted: #888;
       --font-display: 'Syne', sans-serif;
-      --font-mono: 'DM Mono', monospace;
+      --font-mono: 'DM Sans', monospace;
 
       --heading-weight: 700;
     }
@@ -161,7 +161,7 @@
     }
     .stat-label { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
     .hero-card.card-tech {
-      bottom: 0; right: 0;
+      bottom: 0; right: 0; left: 10%;
       display: flex; flex-wrap: wrap; gap: 0.5rem;
       /* width: 490px; */
     }
@@ -340,7 +340,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">JH</div>
+    <div class="nav-logo">WIP</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -385,12 +385,15 @@
           <span class="stat-label">Projects Shipped</span>
         </div> -->
         <div class="hero-card card-tech">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">TypeScript</span>
-          <span class="tech-tag">Node.js</span>
           <span class="tech-tag">Python</span>
-          <span class="tech-tag">PostgreSQL</span>
-          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">C / C++ / C#</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">VHDL / Ladder Logic</span>
+          <span class="tech-tag">SolidWorks</span>
+          <span class="tech-tag">CATIA</span>
+          <span class="tech-tag">Solid Edge</span>
+          <span class="tech-tag">AutoCAD</span>
+          <span class="tech-tag">Altium</span>
         </div>
       </div>
     </div>
@@ -402,9 +405,9 @@
     <h2 class="section-title">Building with<br>purpose & craft.</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Hi! I'm <strong>Jeffrey Hou</strong>, a Mechatronics Engineer with a passion for everything from mechanical design to game development. My comfort zone is the intersection of mechanical, electrical, and software engineering.</p>
-        <p>With <strong>3+ years of experience</strong>, I've worked everywhere - from tweaking 3D printers to automating embedded systems. I believe effective design comes from experience across multiple disciplines.</p>
-        <p>When I'm not coding, you'll find me hiking trails, playing the piano, or tweaking out over my shit ender clone.</p>
+        <p>Hi! I'm <strong>Jeffrey</strong>, a Mechatronics Engineer with a passion for everything from mechanical design to game development. <br>I thrive in projects that combine mechanical, electrical, and software engineering.</p>
+        <p>With <strong>3+ years of experience</strong>, I've worked everywhere - from tweaking 3D printers to automation with embedded systems. I believe effective design comes from experience across multiple disciplines.</p>
+        <p>When I'm not coding, you'll find me reading, playing the piano, or tweaking out over my shit ender clone.</p>
       </div>
       <div>
         <p class="section-label" style="margin-bottom: 1.5rem;">Technologies I work with</p>
@@ -431,45 +434,45 @@
       <div class="project-card">
         <p class="project-num">001</p>
         <h3 class="project-title">DAVWIRE Wire Harness Assembly Process Redesign</h3>
-        <p class="project-desc">Modelled, tested, and deployed wire clamps as a cost-effective alternative to expensive commercial ones.</p>
+        <p class="project-desc">Designed, tested, and deployed modular wire clamps for custom harness manufacturing, reducing costs and improving production efficiency through durable, customizable designs that supported quick wire reconfiguration.</p>
         <div class="project-tags">
           <span class="project-tag">3D printing</span>
           <span class="project-tag">Solid Edge</span>
           <span class="project-tag">MIL-SPEC</span>
         </div>
         <div class="project-links">
-          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.bgsrr35h7gq7" class="project-link">↗ Live Demo</a>
-          <a href="#" class="project-link">⌥ GitHub</a>
+          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.bgsrr35h7gq7" class="project-link" target="_blank">↗ Documentation</a>
+          <!-- <a href="#" class="project-link" target="_blank">⌥ GitHub</a> -->
         </div>
       </div>
 
       <div class="project-card">
         <p class="project-num">002</p>
-        <h3 class="project-title">Two-Axis Machine</h3>
-        <p class="project-desc">Another great project. A CLI tool, a mobile app, an API — whatever you've built. Keep descriptions punchy and results-focused.</p>
+        <h3 class="project-title">Real-Time Two-Axis Machine Operating System</h3>
+        <p class="project-desc">Developed a custom real-time operating system and two-axis machine control system on an STM32 Nucleo-64 board, implementing multithreading, interrupt handling, context switching, and analog I/O processing to control motor outputs with integrated limit-switch safety protection.</p>
         <div class="project-tags">
           <span class="project-tag">C++</span>
           <span class="project-tag">STM32 Nucleo-F401RE</span>
-          <span class="project-tag">GPIO, ADC, SPI, HAL</span>
+          <span class="project-tag">GPIO / ADC / SPI / HAL</span>
         </div>
         <div class="project-links">
-          <a href="https://drive.google.com/file/d/1DyH5fC6DIWlUK4rj_WyNMoTIHfiJgxtW/view?usp=sharing" class="project-link">↗ Live Demo</a>
-          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.kuzffggtem6w" class="project-link">⌥ Documentation</a>
+          <a href="https://drive.google.com/file/d/1DyH5fC6DIWlUK4rj_WyNMoTIHfiJgxtW/view?usp=sharing" class="project-link" target="_blank">↗ Live Demo</a>
+          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.kuzffggtem6w" class="project-link" target="_blank">⌥ Documentation</a>
         </div>
       </div>
 
       <div class="project-card">
         <p class="project-num">003</p>
-        <h3 class="project-title">Project Three</h3>
-        <p class="project-desc">i'll probably put my automated cleaner robot in this slot</p>
+        <h3 class="project-title">Automated Search and Retrieval Robot</h3>
+        <p class="project-desc">Designed, built, and programmed an autonomous cleaning robot with sensor interfacing, navigation error handling, grid&#8209;search traversal, and object detection, with custom LEGO&#8209;compatible components in AutoCAD and SolidWorks.</p>
         <div class="project-tags">
           <span class="project-tag">C++</span>
           <span class="project-tag">SolidWorks / 3D Printing</span>
           <span class="project-tag">AutoCAD / GD&T, ASME Y14.5</span>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">↗ Live Demo</a>
-          <a href="#" class="project-link">⌥ GitHub</a>
+          <a href="https://drive.google.com/file/d/1kp5pFOVpLeIfvrOKC59N0Bggwqiqz3-W/view?usp=sharing" class="project-link" target="_blank">↗ Live Demo</a>
+          <a href="https://docs.google.com/document/d/1CzV0SR2Vs54ZlkyxMEPHXwE4f4cULAiyQZwDOv948UA/edit?tab=t.0#heading=h.nzug3da5k7kj" class="project-link" target="_blank">⌥ Documentation</a>
         </div>
       </div>
 
@@ -482,20 +485,20 @@
     <h2 class="section-title">Let's build<br>something great.</h2>
     <p class="contact-sub">
       I'm currently open to new opportunities - full-time roles,<br>
-      independant contracts, or just a friendly chat.
+      independent contracts, or just a friendly chat.
     </p>
     <div class="contact-links">
       <a href="mailto:j3hou@uwaterloo.ca" class="btn btn-primary">✉ Say Hello</a>
       <a href="https://www.linkedin.com/in/jeffrey-hou-b42b31264/" target="_blank" class="btn btn-outline">LinkedIn</a>
       <a href="https://github.com/jerbosu" target="_blank" class="btn btn-outline">GitHub</a>
-      <a href="resume.pdf" target="_blank" class="btn btn-outline">↓ Resume</a>
+      <a href="https://docs.google.com/document/d/1fxOv8BDsUzoWQQdo5znW-Bfq9LMdQTl5556skrPVNR0/edit?usp=sharing" target="_blank" class="btn btn-outline">↓ Resume</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p class="footer-text">Designed & built by <span>Jeffrey Hou</span></p>
-    <p class="nav-links"><a href="https://github.com/jerbosu">Github</a></p>
+    <p class="nav-links"><a href="https://github.com/jerbosu" target="_blank">Github</a></p>
 
   </footer>
 
